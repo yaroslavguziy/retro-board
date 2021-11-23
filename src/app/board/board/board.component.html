@@ -1,1 +1,36 @@
-<p>board works!</p>
+<div class="container-fluid">
+  <div cdkDropListGroup class="row">
+    <div
+      class="col-sm-4"
+      *ngFor="let column of BoardService.getBoard$() | async"
+    >
+      <h2>{{ column.title }}</h2>
+
+      <div
+        class="example-list"
+        cdkDropList
+        [cdkDropListData]="column.list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          class="example-box"
+          cdkDrag
+          [ngStyle]="{ background: column.color }"
+          *ngFor="let item of column.list"
+        >
+          <app-board-item
+            [item]="item"
+            (emitText)="onAddComment($event, column.id)"
+          >
+            <div *ngFor="let comment of item.comments">
+              <app-comment-item
+                [comment]="comment"
+                (emitComment)="onDeleteComment($event, column.id, item)"
+              ></app-comment-item>
+            </div>
+          </app-board-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
