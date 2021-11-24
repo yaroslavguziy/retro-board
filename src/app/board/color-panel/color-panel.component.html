@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center align-items-center py-2 shadow-sm">
+  <div *ngFor="let color of colorsData">
+    <div
+      [ngStyle]="{ background: color }"
+      class="color-panel-item shadow"
+      (click)="onColorEmit(color)"
+    ></div>
+  </div>
+</div>

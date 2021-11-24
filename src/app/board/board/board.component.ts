@@ -4,7 +4,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+
 import { BoardService } from './../../services/board.service';
+import { Card, Comment } from 'src/app/models/column.model';
 
 @Component({
   selector: 'app-board',
@@ -16,15 +18,41 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onColorChange(color: string, columnId: number) {
+    this.BoardService.changeColumnColor(color, columnId);
+  }
+
+  onDeleteColumn(columnId: number) {
+    this.BoardService.deleteColumn(columnId);
+  }
+
+  onAddCard(text: string, columnId: number) {
+    if (text) {
+      this.BoardService.addCard(text, columnId);
+    }
+  }
+
+  onDeleteCard(cardId: number, columnId: number) {
+    this.BoardService.deleteCard(cardId, columnId);
+  }
+
   onAddComment(event: { id: number; text: string }, columnId: number) {
     this.BoardService.addComment(columnId, event.id, event.text);
   }
 
-  onDeleteComment(comment: any, columnId: number, item: any) {
+  onDeleteComment(comment: Comment, columnId: number, item: any) {
     this.BoardService.deleteComment(columnId, item.id, comment.id);
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  onChangeLike(event: { card: Card; increase: boolean }, columnId: number) {
+    const {
+      card: { id },
+      increase,
+    } = event;
+    this.BoardService.changeLike(id, columnId, increase);
+  }
+
+  drop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
