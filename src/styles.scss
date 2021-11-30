@@ -36,12 +36,7 @@ $retro-board-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 @import "./styles/variables";
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/bootstrap-reboot.scss";
-@import "../node_modules/bootstrap/scss/bootstrap-grid.scss"; // add the grid
-@import "../node_modules/bootstrap/scss/bootstrap-utilities.scss"; // add css utilities
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; // add css utilities
 @import "./styles/reset";
 
 html,

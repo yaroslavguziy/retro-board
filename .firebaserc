@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "retro-board-angular": {
+      "hosting": {
+        "retro-board": [
+          "retro-board-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "retro-board-angular"
+  }
+}

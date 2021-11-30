@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { HeaderComponent } from './header/header.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,6 +17,7 @@ import { DialogModule } from '../components/dialog/dialog.module';
     MatIconModule,
     MatToolbarModule,
     DialogModule,
+    RouterModule,
   ],
   exports: [HeaderComponent],
 })
