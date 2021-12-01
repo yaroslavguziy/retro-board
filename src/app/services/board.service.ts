@@ -6,14 +6,7 @@ import { Card, Column, Comment } from './../models/column.model';
   providedIn: 'root',
 })
 export class BoardService {
-  private initBoard = [
-    {
-      id: 1,
-      title: 'To Do',
-      color: '#009886',
-      list: [],
-    },
-  ];
+  private initBoard = [];
 
   private board: Column[] = this.initBoard;
   private board$ = new BehaviorSubject<Column[]>(this.initBoard);
